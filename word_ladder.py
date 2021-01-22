@@ -35,6 +35,9 @@ def verify_word_ladder(ladder):
 	Returns True if each entry of the input list is adjacent to its neighbors;
 	otherwise returns False.
 	'''
+	#check to make sure our ladder is non empty
+	if not ladder:
+		return False
 	
 	index=0
 	queue=[]
