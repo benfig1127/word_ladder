@@ -1,5 +1,5 @@
 #!/bin/python3
-
+import collections 
 
 def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
 	'''
@@ -29,12 +29,13 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
 	the function returns `None`.
 	'''
 
+	q=collections.deque()
+	q.append(1)
+	q.append(2)
+	return q.popleft()
 
 def verify_word_ladder(ladder):
-	'''
-	Returns True if each entry of the input list is adjacent to its neighbors;
-	otherwise returns False.
-	'''
+	
 	#check to make sure our ladder is non empty
 	if not ladder:
 		return False
@@ -66,17 +67,7 @@ def verify_word_ladder(ladder):
 
 
 def _adjacent(word1, word2):
-	'''
-	Returns True if the input words differ by only a single character;
-	returns False otherwise.
-
-	>>> _adjacent('phone','phony')
-	True
-	>>> _adjacent('stone','money')
-	False
-	'''
-	#previous_char_was_different=False
-	#current_char_is_different=False
+	
 	different=False
 	
 	for index, char in enumerate(word1):
@@ -87,9 +78,27 @@ def _adjacent(word1, word2):
 				different=True
 	return True
 		
-			
+	
+	
+print(word_ladder('stone','money'))
 	
 	
 	
-#print(_adjacent('phone','phony'))
-#print(_adjacent('stone','money'))
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
