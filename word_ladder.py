@@ -35,6 +35,31 @@ def verify_word_ladder(ladder):
 	Returns True if each entry of the input list is adjacent to its neighbors;
 	otherwise returns False.
 	'''
+	
+	index=0
+	queue=[]
+	stop_point=len(ladder)
+	output=True
+	
+	while index<stop_point:
+		#if the queue is empty add item to the queue and continue
+		if not queue:
+			queue.append(ladder[index])
+			index+=1 
+			continue
+		#compare the current word and the word in the queue
+		is_adjacent=_adjacent(ladder[index],queue[0])
+		if not is_adjacent:
+			output=False 
+			break
+		#if the words are adjacent, clear the queue and add the current word to it and continue
+		queue=[]
+		queue.append(ladder[index])
+		index+=1
+		
+	return output 
+
+
 
 
 def _adjacent(word1, word2):
