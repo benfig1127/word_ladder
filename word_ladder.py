@@ -62,7 +62,7 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
 					
 					#removes duplicate entries
 					cleaned_output=[]
-					for i in current:
+					for i in current_stack:
 						if i not in cleaned_output:
 							cleaned_output.append(i)
 					
