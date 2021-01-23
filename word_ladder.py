@@ -122,15 +122,15 @@ def _adjacent(word1, word2):
 		
 	
 	
-print(word_ladder('stone','stone'))
+#print(word_ladder('stone','stone'))
 
-print(word_ladder('aloof','aloof'))
+#print(word_ladder('aloof','aloof'))
 	
 
-print(word_ladder('babes','child'))	
+#print(word_ladder('babes','child'))	
 	
 	
-print(word_ladder('child','babes'))	
+#print(word_ladder('child','babes'))	
 	
 	
 	
