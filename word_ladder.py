@@ -36,6 +36,9 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
 		word_list.append(line.strip())
 	
 	
+	if start_word==end_word:
+		return [start_word]
+	
 	
 	stack=[]
 	stack.append(start_word)
@@ -56,7 +59,14 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
 				
 				if dict_word==end_word:
 					current_stack.append(dict_word)
-					return current_stack
+					
+					#removes duplicate entries
+					cleaned_output=[]
+					for i in current:
+						if i not in cleaned_output:
+							cleaned_output.append(i)
+					
+					return cleaned_output
 				
 				copy_of_current_stack=current_stack.copy()
 				copy_of_current_stack.append(dict_word)
@@ -112,13 +122,15 @@ def _adjacent(word1, word2):
 		
 	
 	
-#print(word_ladder('stone','money'))
+print(word_ladder('stone','stone'))
+
+print(word_ladder('aloof','aloof'))
+	
+
+print(word_ladder('babes','child'))	
 	
 	
-	
-	
-	
-	
+print(word_ladder('child','babes'))	
 	
 	
 	
