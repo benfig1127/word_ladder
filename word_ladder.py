@@ -1,8 +1,5 @@
 #!/bin/python3
 
-from pythonds.basic import Stack
-from pythonds.basic import Deque
-
 
 def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
 	'''
@@ -38,41 +35,37 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
 	for line in f:
 		word_list.append(line.strip())
 	
-	s=Stack()
-	s.push(start_word)
-
-	d=Deque()
-	d.addRear(s)
 	
-	#while not d.isEmpty():
-		#print(d.size())
-		#print(d.removeFront())
 	
-	while not d.isEmpty():
-		current_stack=d.removeFront()
+	stack=[]
+	stack.append(start_word)
+	
+	queue=[]
+	queue.append(stack)
+	
+	while queue:
+		current_stack=queue.pop(0)
+		
+		#print('top of stack:',top_of_stack)
+		#print('bottom of stack:', current_stack[0])
+			
 		
 		for dict_word in word_list:
-			top_of_stack=current_stack.peek()
 			
-			if _adjacent(top_of_stack,dict_word):
+			if _adjacent(current_stack[-1],dict_word):
 				
 				if dict_word==end_word:
-					current_stack.push(word)
-					
+					current_stack.append(dict_word)
 					return current_stack
 				
-				copy_of_stack=current_stack
-				copy_of_stack.push(dict_word)
-				d.addrear(copy_of_stack)
-				word_list=word_list.remove(dict_word)
+				copy_of_current_stack=current_stack.copy()
+				copy_of_current_stack.append(dict_word)
+				queue.append(copy_of_current_stack)
+				word_list.remove(dict_word)
 				
+		
 	return None
 		
-	#q=collections.deque()
-	#q.append(1)
-	#q.append(2)
-	#return q.popleft()
-
 def verify_word_ladder(ladder):
 	
 	#check to make sure our ladder is non empty
